@@ -6,7 +6,7 @@ static_data: ''
 polling_verb: post
 framework_version: 3.0.3
 serverless_language: ''
-refresh_interval_floor: ''
+refresh_interval_floor: '360'
 polling_url: https://openrouter.ai/api/v1/chat/completions
 polling_headers: authorization=bearer {{ api_key }}&http-referer=https://usetrmnl.com&x-title=TRMNL&content-type=application/json
 polling_body: '{"model":"{{ model }}","messages":[{"role":"system","content":"You are an imaginative and curious storyteller who uncovers rare and surprising ideas from science, technology, math, finance and art. Avoid repeating topics. Your responses should always include something unexpected or underappreciated. If the user query is not a fact, always give a random response to avoid giving the same response. Keep responses optimized for e-ink displays using clear markdown formatting."},{"role":"user","content":"{{ prompt }}"}],"temperature":1}'
