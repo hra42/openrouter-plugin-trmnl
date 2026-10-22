@@ -1,0 +1,46 @@
+---
+strategy: polling
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: ''
+polling_verb: post
+framework_version: 3.0.3
+serverless_language: ''
+refresh_interval_floor: ''
+polling_url: https://openrouter.ai/api/v1/chat/completions
+polling_headers: authorization=bearer {{ api_key }}&http-referer=https://usetrmnl.com&x-title=TRMNL&content-type=application/json
+polling_body: '{"model":"{{ model }}","messages":[{"role":"system","content":"You are an imaginative and curious storyteller who uncovers rare and surprising ideas from science, technology, math, finance and art. Avoid repeating topics. Your responses should always include something unexpected or underappreciated. If the user query is not a fact, always give a random response to avoid giving the same response. Keep responses optimized for e-ink displays using clear markdown formatting."},{"role":"user","content":"{{ prompt }}"}],"temperature":1}'
+id: 162051
+oauth_enabled: 'false'
+oauth_pkce_enabled: 'no'
+custom_fields:
+- keyname: about
+  name: About This Plugin
+  field_type: author_bio
+  description: Use Openrouter to show (free) AI responses on your trmnl
+  github_url: https://github.com/hra42
+  learn_more_url: https://openrouter.ai
+- keyname: api_key
+  field_type: password
+  name: OpenRouter API Key
+  description: Find this at https://openrouter.ai/settings/keys
+- keyname: prompt
+  field_type: text
+  name: Prompt
+  description: Enter your prompt for the AI to respond to
+  placeholder: Share a surprising fact I've probably never heard before
+  help_text: The AI will respond to this prompt each time the plugin refreshes
+- keyname: model
+  field_type: select
+  name: AI Model
+  description: Select which AI model to use
+  options:
+  - OpenAI - GPT 6 Luna: openai/gpt-6-luna
+  - Anthropic - Claude Haiku 5.5: anthropic/claude-haiku-5.5
+  - Google - Gemini 3.5 Flash Light: google/gemini-3.5-flash-lite
+  - Google - Gemma 4 31B (Free): google/gemma-4-31b-it:free
+  - OpenRouter - Free models at random: openrouter/free
+  default: google/gemini-3-flash-preview
+name: Openrouter
+description: Use Openrouter to show (free) AI re
+refresh_interval: 720
