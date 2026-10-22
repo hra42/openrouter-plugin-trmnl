@@ -1,0 +1,19 @@
+<div class="layout">
+  <div class="richtext richtext--left gap--large">
+    <div class="content content--left gap" data-content-limiter="true" style="font-size: 24px; line-height: 1.5;">
+      {% if error %}
+        <div class="error">
+          <p><strong>Error {{ error.code }}:</strong> {{ error.message }}</p>
+        </div>
+      {% else %}
+        {{ choices[0].message.content | markdown_to_html }}
+      {% endif %}
+    </div>
+  </div>
+</div>
+<div class="title_bar">
+  <img src="https://openrouter.ai/favicon.ico" class="image image-stroke image-stroke--black image-stroke--small" alt="OpenRouter plugin icon">
+  <span class="title">{{ model | split: "/" | first | capitalize}} - {{ model | split: "/" | last | capitalize}}</span>
+  <span class="text">Usage: {{usage.total_tokens}} Tokens</span>
+  <span class="instance">{{ trmnl.plugin_settings.instance_name }}</span>
+</div>
